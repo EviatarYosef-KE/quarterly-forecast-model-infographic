@@ -180,9 +180,15 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
                             </div>
-                            <div>
+                            <div class="flex-1">
                                 <h3 class="text-2xl font-bold text-slate-800">Time-Based Probability</h3>
                                 <p class="text-brandBlue font-semibold text-sm">Calendar Urgency Factor</p>
+                                <div class="flex items-center gap-2 mt-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                    </svg>
+                                    <span class="text-xs text-slate-500 italic">Google Apps Script (Daily)</span>
+                                </div>
                             </div>
                         </div>
 
@@ -238,9 +244,16 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                                 </svg>
                             </div>
-                            <div>
+                            <div class="flex-1">
                                 <h3 class="text-2xl font-bold text-slate-800">Stage Probability</h3>
                                 <p class="text-brandGold font-semibold text-sm">Historical Performance Baseline</p>
+                                <div class="flex items-center gap-2 mt-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                    <span class="text-xs text-slate-500 italic">HubSpot Pipeline Settings</span>
+                                </div>
                             </div>
                         </div>
 
@@ -268,9 +281,15 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                             </svg>
                         </div>
-                        <div>
+                        <div class="flex-1">
                             <h3 class="text-2xl font-bold text-slate-800">Dynamic Win Probability</h3>
                             <p class="text-slate-500 font-semibold text-sm">Dual-Path Calculation System</p>
+                            <div class="flex items-center gap-2 mt-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                                </svg>
+                                <span class="text-xs text-slate-500 italic">HubSpot Workflows (2025 Data Analysis)</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -413,8 +432,12 @@
                     <div class="text-left">
                         <div class="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-1">Total Forecast</div>
                         <div class="text-4xl font-black text-brandPurple" id="total-forecast">$0</div>
-                        <div class="text-sm text-slate-500 mt-1">
-                            <span id="total-pools" class="font-semibold text-slate-700">0</span> pools
+                        <div class="text-sm text-slate-500 mt-2 space-y-1">
+                            <div>
+                                <span class="font-semibold text-slate-700" id="total-forecasted-pools">0</span> forecasted pools
+                                <span class="text-slate-400 mx-2">•</span>
+                                <span class="font-semibold text-slate-700" id="total-pools">0</span> total pools
+                            </div>
                         </div>
                     </div>
                     <button onclick="addDeal()" class="bg-brandPurple text-white px-6 py-3 rounded-lg font-semibold shadow-lg hover:bg-purple-700 transition-all duration-300 hover:scale-105">
@@ -458,8 +481,14 @@
         }
 
         function calculateForecast(pools, dynamic, stage, time) {
-            const arr = pools * ASP;
-            return arr * (dynamic / 100) * (stage / 100) * (time / 100);
+            // Calculate the forecasted pools first
+            const forecastedPools = pools * (dynamic / 100) * (stage / 100) * (time / 100);
+            // Then calculate the ARR from forecasted pools
+            return forecastedPools * ASP;
+        }
+
+        function calculateForecastedPools(pools, dynamic, stage, time) {
+            return pools * (dynamic / 100) * (stage / 100) * (time / 100);
         }
 
         function updateDeal(id) {
@@ -469,6 +498,7 @@
             const time = parseFloat(document.getElementById(`time-${id}`).value);
 
             const arr = pools * ASP;
+            const forecastedPools = calculateForecastedPools(pools, dynamic, stage, time);
 
             document.getElementById(`pools-value-${id}`).textContent = pools;
             document.getElementById(`arr-value-${id}`).textContent = formatCurrency(arr);
@@ -478,6 +508,7 @@
 
             const forecast = calculateForecast(pools, dynamic, stage, time);
             document.getElementById(`forecast-${id}`).textContent = formatCurrency(forecast);
+            document.getElementById(`forecasted-pools-${id}`).textContent = forecastedPools.toFixed(2);
 
             updateTotal();
         }
@@ -485,9 +516,11 @@
         function updateTotal() {
             let total = 0;
             let totalPools = 0;
+            let totalForecastedPools = 0;
             for (let i = 0; i < dealCount; i++) {
                 const forecastEl = document.getElementById(`forecast-${i}`);
                 const poolsEl = document.getElementById(`pools-${i}`);
+                const forecastedPoolsEl = document.getElementById(`forecasted-pools-${i}`);
                 if (forecastEl) {
                     const forecastText = forecastEl.textContent.replace(/[$,]/g, '');
                     total += parseFloat(forecastText) || 0;
@@ -495,9 +528,13 @@
                 if (poolsEl) {
                     totalPools += parseInt(poolsEl.value) || 0;
                 }
+                if (forecastedPoolsEl) {
+                    totalForecastedPools += parseFloat(forecastedPoolsEl.textContent) || 0;
+                }
             }
             document.getElementById('total-forecast').textContent = formatCurrency(total);
             document.getElementById('total-pools').textContent = totalPools;
+            document.getElementById('total-forecasted-pools').textContent = totalForecastedPools.toFixed(2);
         }
 
         function removeDeal(id) {
@@ -519,6 +556,7 @@
             };
 
             const arr = data.pools * ASP;
+            const forecastedPools = calculateForecastedPools(data.pools, data.dynamic, data.stage, data.time);
             const forecast = calculateForecast(data.pools, data.dynamic, data.stage, data.time);
 
             const dealHTML = `
@@ -526,7 +564,11 @@
                     <div class="flex items-center justify-between mb-3">
                         <div>
                             <h3 class="text-lg font-bold text-slate-800">${data.name}</h3>
-                            <p class="text-xs text-slate-500 mt-1">ARR: <span id="arr-value-${id}" class="font-semibold text-slate-700">${formatCurrency(arr)}</span></p>
+                            <p class="text-xs text-slate-500 mt-1">
+                                ARR: <span id="arr-value-${id}" class="font-semibold text-slate-700">${formatCurrency(arr)}</span>
+                                <span class="mx-2">•</span>
+                                <span id="forecasted-pools-${id}" class="font-semibold text-brandPurple">${forecastedPools.toFixed(2)}</span> forecasted pools
+                            </p>
                         </div>
                         <button onclick="removeDeal(${id})" class="text-slate-400 hover:text-red-500 transition-colors">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
