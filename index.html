@@ -433,7 +433,6 @@
 
     <script>
         let dealCount = 0;
-        const MAX_DEALS = 6;
         const ASP = 1000; // Average Selling Price per pool
 
         const deals = [
@@ -510,11 +509,6 @@
         }
 
         function addDeal(dealData = null) {
-            if (dealCount >= MAX_DEALS) {
-                alert(`Maximum of ${MAX_DEALS} deals reached`);
-                return;
-            }
-
             const id = dealCount++;
             const data = dealData || {
                 name: `New Deal ${id + 1}`,
