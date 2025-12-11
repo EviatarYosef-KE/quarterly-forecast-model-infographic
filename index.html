@@ -413,6 +413,9 @@
                     <div class="text-left">
                         <div class="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-1">Total Forecast</div>
                         <div class="text-4xl font-black text-brandPurple" id="total-forecast">$0</div>
+                        <div class="text-sm text-slate-500 mt-1">
+                            <span id="total-pools" class="font-semibold text-slate-700">0</span> pools
+                        </div>
                     </div>
                     <button onclick="addDeal()" class="bg-brandPurple text-white px-6 py-3 rounded-lg font-semibold shadow-lg hover:bg-purple-700 transition-all duration-300 hover:scale-105">
                         + Add Deal
@@ -482,14 +485,20 @@
 
         function updateTotal() {
             let total = 0;
+            let totalPools = 0;
             for (let i = 0; i < dealCount; i++) {
                 const forecastEl = document.getElementById(`forecast-${i}`);
+                const poolsEl = document.getElementById(`pools-${i}`);
                 if (forecastEl) {
                     const forecastText = forecastEl.textContent.replace(/[$,]/g, '');
                     total += parseFloat(forecastText) || 0;
                 }
+                if (poolsEl) {
+                    totalPools += parseInt(poolsEl.value) || 0;
+                }
             }
             document.getElementById('total-forecast').textContent = formatCurrency(total);
+            document.getElementById('total-pools').textContent = totalPools;
         }
 
         function removeDeal(id) {
